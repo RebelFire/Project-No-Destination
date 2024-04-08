@@ -7,6 +7,7 @@ public class PlayerVisualCollision : MonoBehaviour
 {
     [SerializeField] private Transform player;
     [SerializeField] private CapsuleCollider magnetCollider;
+    [SerializeField] private SpriteRenderer magnetSprite;
     private PlayerStatus playerStatus;
     private PlayerScore playerScore;
     private bool magnetMode = false;
@@ -55,10 +56,12 @@ public class PlayerVisualCollision : MonoBehaviour
             //boxCollider.size = new Vector3(nonMagnetModeSize, boxColliderSize.y, boxColliderSize.z);
             magnetMode = false;
             magnetCollider.enabled = false;
+            magnetSprite.gameObject.SetActive(false);
         } else {
             //boxCollider.size = new Vector3(magnetModeSize, boxColliderSize.y, boxColliderSize.z);
             magnetMode = true;
             magnetCollider.enabled = true;
+            magnetSprite.gameObject.SetActive(true);
         }
     }
 

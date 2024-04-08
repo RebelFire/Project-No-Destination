@@ -14,10 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   segmentListName: Star Segment List
   segments:
-  - {fileID: 11400000, guid: a5dd52c85a7aaef468dee9c457d75c84, type: 2}
-  - {fileID: 11400000, guid: 6078d0895a6fc8e49a64ebc715ce0d17, type: 2}
-  - {fileID: 11400000, guid: bf9cb7287f508274d94b4b45eadcc654, type: 2}
-  - {fileID: 11400000, guid: fb53c63d7a00bd14984d09c088e00b15, type: 2}
   - {fileID: 11400000, guid: 535f9f244608d0642b5a7ac75afc1897, type: 2}
   - {fileID: 11400000, guid: f51bad45a3d25a649895e6490fae9239, type: 2}
   - {fileID: 11400000, guid: 1db47c6477482074db5f46f32cde3df1, type: 2}

@@ -26,7 +26,7 @@ public class ObstacleSpawner : MonoBehaviour
     }
 
     private void PickRandomStarCounter() {
-        starCounter = UnityEngine.Random.Range(50, 100);
+        starCounter = UnityEngine.Random.Range(1, 10);
     }
 
     private void InitiateObstacleSpawn() {
