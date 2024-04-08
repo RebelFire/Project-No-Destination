@@ -1,7 +1,7 @@
 # Project No Destination
- Simple Subway Surfer clone. I developed it to practice my c# skill. I tried to practice clean code and develope a game clone in 1 week.
+ Simple Subway Surfer clone. I developed it to practice my c# skill. I tried to practice clean code and develope a game clone in 1 week. Link for playable version will be added after day 7. 3rd party assets are licenced under cc0 and not included in this repo. I listed all 3rd party assets i used in this project.
 
- Link for playable version will be added after day 7.
+ 
 
  3rd party assets i use: 
  - [hand painted tools from sicon](https://sicon.itch.io/hand-painted-tools)
