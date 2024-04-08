@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e0d2052896d8c9498f965ef68dfea1b, type: 3}
+  m_Name: MagnetSegment
+  m_EditorClassIdentifier: 
+  segmentName: MagnetSegment
+  segmentPrefabs:
+  - {fileID: 6097382833911463467, guid: 074812384b0953d4ba32bf2341dfae76, type: 3}
+  - {fileID: 358432524654006365, guid: 568d32d02ba581f4bb7d03c051fad38f, type: 3}
+  - {fileID: 6097382833911463467, guid: 074812384b0953d4ba32bf2341dfae76, type: 3}
+  nextSegmentChooseMethod: 0
+  allowedNextSegments: []
+  allowedNextSegmentsList: {fileID: 0}
+  forbiddenNextSegments: []
+  fobiddenNextSegmentsList: {fileID: 0}
+  blockLocationType: 

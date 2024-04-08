@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e0d2052896d8c9498f965ef68dfea1b, type: 3}
+  m_Name: CenterBlockRightCoin
+  m_EditorClassIdentifier: 
+  segmentName: CenterBlockRightCoin
+  segmentPrefabs:
+  - {fileID: 6097382833911463467, guid: 074812384b0953d4ba32bf2341dfae76, type: 3}
+  - {fileID: 358432524654006365, guid: 10f55ed1cb130024d9a18dfd1a952af0, type: 3}
+  - {fileID: 511998985568471522, guid: 48f846617c1fcfa468dfd8d055ab38b5, type: 3}
+  nextSegmentChooseMethod: 1
+  allowedNextSegments: []
+  allowedNextSegmentsList: {fileID: 0}
+  forbiddenNextSegments:
+  - {fileID: 11400000, guid: fd7794163d6b6124f8d883ddcdcaa38f, type: 2}
+  - {fileID: 11400000, guid: f8a87496f99108546b5a1c62f653a51a, type: 2}
+  - {fileID: 11400000, guid: a75bf11a12d564a4eaef5494db01fdf7, type: 2}
+  - {fileID: 11400000}
+  fobiddenNextSegmentsList: {fileID: 0}
+  blockLocationType: 
