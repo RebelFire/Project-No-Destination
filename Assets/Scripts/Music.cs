@@ -10,15 +10,23 @@ public class Music : MonoBehaviour {
 
     private void Start() {
         audioSource = GetComponent<AudioSource>();
-        audioSource.Play();
+        StartMusic();
+    }
+
+    private void Update() {
+        if (GameStateManager.instance.CurrentGameState == GameStateManager.GameState.GameOver) {
+            StopMusic();
+        }
     }
 
     public void StartMusic() {
-        audioSource.Play();
+        //audioSource.Play();
+        SetVolume(100);
     }
 
     public void StopMusic() {
-        audioSource.Stop();
+        //audioSource.Stop();
+        SetVolume(0);
     }
 
     public void SetVolume(float volume) {

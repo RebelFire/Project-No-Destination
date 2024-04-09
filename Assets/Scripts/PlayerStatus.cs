@@ -21,18 +21,23 @@ public class PlayerStatus : MonoBehaviour {
     private void Start() {
         carRepairUIComponent = carRepairUI.GetComponent<UICarRepair>();
     }
+    private void Update() {
+        if (GameStateManager.instance.CurrentGameState == GameStateManager.GameState.GameOver) {
+            return;
+        }
+    }
 
     public void DamageCar() {
         switch (carStatus) {
             case CarStatus.normal:
                 carStatus = CarStatus.damaged;
-                Debug.LogWarning("Car is damaged");
                 ResetCarRepairScore();
                 carRepairUIComponent.ShowRepairMeter();
                 break;
             case CarStatus.damaged:
                 carStatus = CarStatus.destroyed;
                 OnPlayerDeath?.Invoke(this, EventArgs.Empty);
+                GameStateManager.instance.GameOver();
                 break;
             case CarStatus.destroyed:
                 Debug.LogError("Car is already destroyed");
@@ -53,7 +58,6 @@ public class PlayerStatus : MonoBehaviour {
                 carStatus = CarStatus.normal;
                 ResetCarRepairScore();
                 carRepairUIComponent.HideRepairMeter();
-                Debug.Log("Car repaired");
             }
         }
         

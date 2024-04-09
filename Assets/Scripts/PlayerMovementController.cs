@@ -37,6 +37,10 @@ public class PlayerMovementController : MonoBehaviour
 
     private void Update() {
 
+        if (GameStateManager.instance.CurrentGameState == GameStateManager.GameState.GameOver) {
+            return;
+        }
+
         ShrinkController();
 
         if (!isMovingCompleted) {

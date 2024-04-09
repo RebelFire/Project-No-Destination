@@ -27,6 +27,12 @@ public class SegmentCreator : MonoBehaviour {
         InitiateSegmentSpawn();
         
     }
+
+    private void Update() {
+        if (GameStateManager.instance.CurrentGameState == GameStateManager.GameState.GameOver) {
+            return;
+        }
+    }
     private void PickRandomStarCounter() {
         starCounter = UnityEngine.Random.Range(50, 100);
     }

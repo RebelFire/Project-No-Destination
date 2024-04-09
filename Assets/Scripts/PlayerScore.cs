@@ -8,16 +8,17 @@ using System.IO;
 public class PlayerScore : MonoBehaviour
 {
     [SerializeField] private UIScore ui;
-    
+    [SerializeField] private UIEndGame endGameUI;
     
     private UIScore uiComponent;
-    private int score = 0;
+    [SerializeField] private int score = 0;
     private int highScore = 0;
     private float timePassed = 0;
+    private bool isHighScoreAchieved = false;
 
     private PlayerData playerData;
     private PlayHistory[] plays;
-    [SerializeField] private PlayerScore playerScore;
+    //[SerializeField] private PlayerScore playerScore;
 
     [Serializable]
     public struct PlayerData
@@ -56,6 +57,11 @@ public class PlayerScore : MonoBehaviour
     }
 
     private void Update() {
+
+        if (GameStateManager.instance.CurrentGameState == GameStateManager.GameState.GameOver) {
+            return;
+        }
+
         timePassed += Time.deltaTime;
         uiComponent.UpdateTime((int)timePassed);
     }
@@ -69,6 +75,7 @@ public class PlayerScore : MonoBehaviour
         UpdateLastPlay(lastPlay);
         playerData.totalScore += score;
         if (playerData.highScore < score) {
+            isHighScoreAchieved = true;
             playerData.highScore = score;
         }
         playerData.totalPlayTime += time;
@@ -141,7 +148,6 @@ public class PlayerScore : MonoBehaviour
     }
 
     private void OnPlayerDeathEvent(object sender, EventArgs e) {
-
         OnPlayerDeathFromPlayerScore(score, (int)timePassed);
         ShowGameEndUI();
     }
@@ -150,8 +156,7 @@ public class PlayerScore : MonoBehaviour
 
 
     private void ShowGameEndUI() {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-
+        endGameUI.EnableGUI(isHighScoreAchieved, score, (int)timePassed);
     }
 
 
@@ -187,6 +192,7 @@ public class PlayerScore : MonoBehaviour
 
     public void SetHighScore(int score) {
         highScore = score;
+        isHighScoreAchieved = true;
         playerData.highScore = highScore;
         uiComponent.UpdateHighScore(highScore);
     }

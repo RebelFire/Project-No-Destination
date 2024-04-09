@@ -25,7 +25,10 @@ public class Coin : MonoBehaviour
     private bool magnetMode = false;
 
     private void Update() {
-        if(emissionChangeTime < emissionChangeTimeMax) {
+        if (GameStateManager.instance.CurrentGameState == GameStateManager.GameState.GameOver) {
+            return;
+        }
+        if (emissionChangeTime < emissionChangeTimeMax) {
             emissionChangeTime += Time.deltaTime;
         } else {
             ChangeEmission();

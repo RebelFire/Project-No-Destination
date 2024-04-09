@@ -38,6 +38,10 @@ public class RoadMovement : MonoBehaviour
     }
 
     private void Update() {
+        if (GameStateManager.instance.CurrentGameState == GameStateManager.GameState.GameOver) {
+            return;
+        }
+
         transform.position += Vector3.back * Time.deltaTime * movementSpeed;
         activeRoad.position += Vector3.back * Time.deltaTime * movementSpeed;
         passiveRoad.position += Vector3.back * Time.deltaTime * movementSpeed;

@@ -10,8 +10,14 @@ public class ObstacleMover : MonoBehaviour
 
     }
 
+
     // Update is called once per frame
     void Update() {
+
+        if (GameStateManager.instance.CurrentGameState == GameStateManager.GameState.GameOver) {
+            return;
+        }
+
         if (left) {
             transform.position += new Vector3(-5, 0, 0) * Time.deltaTime;
         }

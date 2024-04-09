@@ -12,9 +12,6 @@ public class PlayerVisualCollision : MonoBehaviour
     private PlayerScore playerScore;
     private bool magnetMode = false;
     private BoxCollider boxCollider;
-    private Vector3 boxColliderSize;
-    private const float magnetModeSize = 15f;
-    private const float nonMagnetModeSize = 2.5f;
 
     private float remainingMagnetDuration = 5f;
     private float magnetDuration = 5f;
@@ -26,11 +23,15 @@ public class PlayerVisualCollision : MonoBehaviour
 
         boxCollider = GetComponent<BoxCollider>();
 
-        boxColliderSize = boxCollider.size;
     }
+
+
 
     private void Update() {
 
+        if (GameStateManager.instance.CurrentGameState == GameStateManager.GameState.GameOver) {
+            return;
+        }
         
         if (magnetMode == true) {
             if (remainingMagnetDuration > 0) {
@@ -53,12 +54,10 @@ public class PlayerVisualCollision : MonoBehaviour
 
     public void ToggleMagnetMode() {
         if(magnetMode) {
-            //boxCollider.size = new Vector3(nonMagnetModeSize, boxColliderSize.y, boxColliderSize.z);
             magnetMode = false;
             magnetCollider.enabled = false;
             magnetSprite.gameObject.SetActive(false);
         } else {
-            //boxCollider.size = new Vector3(magnetModeSize, boxColliderSize.y, boxColliderSize.z);
             magnetMode = true;
             magnetCollider.enabled = true;
             magnetSprite.gameObject.SetActive(true);
