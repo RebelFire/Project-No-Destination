@@ -15,6 +15,7 @@ public class PlayerScore : MonoBehaviour
     private int highScore = 0;
     private float timePassed = 0;
     private bool isHighScoreAchieved = false;
+    private bool webglbuild = false;
 
     private PlayerData playerData;
     private PlayHistory[] plays;
@@ -43,16 +44,26 @@ public class PlayerScore : MonoBehaviour
         return timePassed;
     }
 
-
+    private void Awake() {
+#if UNITY_WEBGL
+        webglbuild = true;
+#endif
+    }
 
 
 
     private void Start() {
         uiComponent = ui.gameObject.GetComponent<UIScore>();
         gameObject.GetComponent<PlayerStatus>().OnPlayerDeath += OnPlayerDeathEvent;
+
+        if (!webglbuild) {
+            playerData = ReadData();
+            highScore = playerData.highScore;
+        }
+
+
+
         
-        playerData = ReadData();
-        highScore = playerData.highScore;
 
     }
 
@@ -71,16 +82,19 @@ public class PlayerScore : MonoBehaviour
     }
 
     private void OnPlayerDeathFromPlayerScore(int score, int time) {
-        int lastPlay = WritePlayHistory(score, time);
-        UpdateLastPlay(lastPlay);
-        playerData.totalScore += score;
-        if (playerData.highScore < score) {
-            isHighScoreAchieved = true;
-            playerData.highScore = score;
+        if (!webglbuild) {
+            int lastPlay = WritePlayHistory(score, time);
+            UpdateLastPlay(lastPlay);
+            playerData.totalScore += score;
+            if (playerData.highScore < score) {
+                isHighScoreAchieved = true;
+                playerData.highScore = score;
+            }
+            playerData.totalPlayTime += time;
+            playerData.totalPlayCount++;
+            WritePlayerData(playerData);
         }
-        playerData.totalPlayTime += time;
-        playerData.totalPlayCount++;
-        WritePlayerData(playerData);
+        
     }
 
 
@@ -113,11 +127,15 @@ public class PlayerScore : MonoBehaviour
 
 
     private PlayerData ReadData() {
-        string json = File.ReadAllText("Saves/PlayerData.json");
+        if (!webglbuild) {
+            string json = File.ReadAllText("Saves/PlayerData.json");
 
-        PlayerData loadedPlayer = JsonUtility.FromJson<PlayerData>(json);
+            PlayerData loadedPlayer = JsonUtility.FromJson<PlayerData>(json);
 
-        return loadedPlayer;
+            return loadedPlayer;
+        }
+        return new PlayerData();
+        
     }
 
     private PlayHistory ReadPlayHistory(string playName) {
